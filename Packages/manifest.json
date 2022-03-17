@@ -1,5 +1,15 @@
 {
+  "scopedRegistries": [
+    {
+      "name": "Pretia Technologies",
+      "url": "https://registry.npmjs.com",
+      "scopes": [
+        "com.pretia"
+      ]
+    }
+  ],
   "dependencies": {
+    "com.pretia.sdk": "0.5.1",
     "com.unity.collab-proxy": "1.11.2",
     "com.unity.ide.rider": "2.0.7",
     "com.unity.ide.visualstudio": "2.0.11",
