@@ -10,10 +10,11 @@ namespace PretiaMapConverter
     {
         public static (bool isSuccess, Exception err) TryGetPointCloudDataFromMap(
             string mapData,
-            out List<Vector3> pointCloud)
+            out List<Vector3> pointCloud
+        )
         {
             var pretiaMapData = JsonSerializer.Deserialize<PretiaPointCloudData>(mapData);
-            
+
             if (pretiaMapData != null)
             {
                 pointCloud = pretiaMapData.GetVertices();
