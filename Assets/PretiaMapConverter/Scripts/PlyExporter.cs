@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace PretiaMapConverter
 {
-    public class PlyExporter
+    public static class PlyExporter
     {
         public static async Task Export(string directoryPath, List<Vector3> pointCloud)
         {

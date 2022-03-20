@@ -7,7 +7,7 @@ using Utf8Json;
 
 namespace PretiaMapConverter
 {
-    public class MapDataConverter
+    public static class MapDataConverter
     {
         public static (bool isSuccess, Exception err) TryGetPointCloudDataFromMap(
             string mapData,
