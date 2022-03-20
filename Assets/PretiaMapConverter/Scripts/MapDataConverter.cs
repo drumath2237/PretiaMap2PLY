@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PretiaArCloud.Pcx;
 using UnityEngine;
 using Utf8Json;
@@ -15,14 +16,17 @@ namespace PretiaMapConverter
         {
             var pretiaMapData = JsonSerializer.Deserialize<PretiaPointCloudData>(mapData);
 
-            if (pretiaMapData != null)
+            if (pretiaMapData == null)
             {
-                pointCloud = pretiaMapData.GetVertices();
-                return (true, null);
+                pointCloud = null;
+                return (false, new InvalidOperationException("invalid map data"));
             }
 
-            pointCloud = null;
-            return (false, new InvalidOperationException("invalid map data"));
+            pointCloud = pretiaMapData
+                .GetVertices()
+                .Select(point => new Vector3(point.x, -point.y, point.z))
+                .ToList();
+            return (true, null);
         }
     }
 }
