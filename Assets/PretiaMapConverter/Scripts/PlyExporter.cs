@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace PretiaMapConverter
@@ -8,16 +10,27 @@ namespace PretiaMapConverter
     {
         public static byte[] ConvertPointCloudToPlyBinary(List<Vector3> pointCloud)
         {
-            var str = "ply\nformat little_endian";
-            var bytes = System.Text.Encoding.UTF8.GetBytes(str);
+            var bytes = CreatePlyHeader(3);
+            _ = OutputContent(bytes);
 
 
-            foreach (var c in str.ToCharArray())
+            return null;
+        }
+
+        private static async Task<bool> OutputContent(byte[] data)
+        {
+            var basePath = Path.Combine(Application.dataPath, "PretiaMapConverter/Maps");
+            if (!Directory.Exists(basePath))
             {
-                var code = (int)c;
+                Directory.CreateDirectory(basePath);
             }
 
-            return bytes;
+            var filePath = Path.Combine(basePath, "map.ply");
+
+            using var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            await fs.WriteAsync(data, 0, data.Length);
+
+            return true;
         }
 
         private static byte[] CreatePlyHeader(int vertexCount)
@@ -30,6 +43,7 @@ property float y
 property float z
 end_header
 ";
+
             return Encoding.UTF8.GetBytes(header);
         }
     }

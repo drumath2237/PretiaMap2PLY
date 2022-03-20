@@ -8,7 +8,6 @@ namespace PretiaMapConverter.Tests
         public void TestExporter()
         {
             PlyExporter.ConvertPointCloudToPlyBinary(null);
-            
         }
     }
 }
