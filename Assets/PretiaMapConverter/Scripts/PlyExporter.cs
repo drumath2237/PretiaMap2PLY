@@ -11,44 +11,29 @@ namespace PretiaMapConverter
 {
     public class PlyExporter
     {
-        public static byte[] ConvertPointCloudToPlyBinary(List<Vector3> pointCloud)
+        public static async Task Export(string directoryPath, List<Vector3> pointCloud)
         {
-            var dummy = new List<Vector3>();
+            var headerData = CreatePlyHeader(pointCloud.Count);
+            var pointCloudData = CreatePlyBodyFromVectors(pointCloud);
 
-            var random = new Random();
-            for (var i = 0; i < 1000; i++)
-            {
-                var point = new Vector3((float)random.Next(100) / 100.0f, (float)random.Next(100) / 100.0f,
-                    (float)random.Next(100) / 100.0f);
-                dummy.Add(point);
-            }
-
-            var headerData = CreatePlyHeader(dummy.Count);
-            var pointCloudData = CreatePlyPointCloudBytes(dummy);
-
-            _ = OutputContent(headerData, pointCloudData);
-
-            return null;
+            await WritePlyDataAsync(directoryPath, headerData, pointCloudData);
         }
 
-        private static async Task<bool> OutputContent(byte[] header, byte[] body)
+        private static async Task WritePlyDataAsync(string directoryPath, byte[] header, byte[] body)
         {
-            var basePath = Path.Combine(Application.dataPath, "PretiaMapConverter/Maps");
-            if (!Directory.Exists(basePath))
+            if (!Directory.Exists(directoryPath))
             {
-                Directory.CreateDirectory(basePath);
+                Directory.CreateDirectory(directoryPath);
             }
 
-            var filePath = Path.Combine(basePath, "map.ply");
+            var filePath = Path.Combine(directoryPath, "map.ply");
 
             using var fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
             await fs.WriteAsync(header, 0, header.Length);
             await fs.WriteAsync(body, 0, body.Length);
-
-            return true;
         }
 
-        public static byte[] CreatePlyPointCloudBytes(List<Vector3> pointCloud)
+        private static byte[] CreatePlyBodyFromVectors(IEnumerable<Vector3> pointCloud)
         {
             var floatArray = pointCloud.Aggregate(new List<float>(), (list, point) =>
             {
