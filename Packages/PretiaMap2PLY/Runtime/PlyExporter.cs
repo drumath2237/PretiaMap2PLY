@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace PretiaMapConverter
+namespace PretiaMap2PLY
 {
     public static class PlyExporter
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using PretiaMapConverter;
+using PretiaMap2PLY;
 
 public class MapConverterTest
 {

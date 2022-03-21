@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace PretiaMapConverter.Editor
+namespace PretiaMap2PLY.Editor
 {
     public class MapConverterWindow : EditorWindow
     {

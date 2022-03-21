@@ -1,10 +1,10 @@
 {
-    "name": "PretiaMapConverter.Tests",
+    "name": "PretiaMap2PLY.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "PretiaMapConverter"
+        "PretiaMap2PLY"
     ],
     "includePlatforms": [
         "Editor"

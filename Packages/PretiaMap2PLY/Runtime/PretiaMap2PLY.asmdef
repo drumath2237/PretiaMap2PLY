@@ -1,5 +1,5 @@
 {
-    "name": "PretiaMapConverter",
+    "name": "PretiaMap2PLY",
     "rootNamespace": "",
     "references": [
         "GUID:bd786a5383ccc05409ebf7e1d118574b"

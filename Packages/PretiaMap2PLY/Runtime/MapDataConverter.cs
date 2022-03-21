@@ -5,7 +5,7 @@ using PretiaArCloud.Pcx;
 using UnityEngine;
 using Utf8Json;
 
-namespace PretiaMapConverter
+namespace PretiaMap2PLY
 {
     public static class MapDataConverter
     {
