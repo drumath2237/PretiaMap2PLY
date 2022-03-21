@@ -51,6 +51,8 @@ UPMのウィンドウから「Add package from git URL...」を押下し、
 するとウィンドウが開くので、
 Selectボタンを押して`.map`ファイルを選択し、Exportボタンで保存場所を選択してエクスポートします。
 
+Pretiaのマップは基本的に、`Assets/Pretia/MapGroups/`以下にダウンロードされます。
+
 ![img](./docs/window.png)
 
 ## Contact
