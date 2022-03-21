@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.drumath2237.pretiamap2ply": {
+      "version": "file:PretiaMap2PLY",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.pretia.sdk": {
       "version": "0.5.1",
       "depth": 0,
