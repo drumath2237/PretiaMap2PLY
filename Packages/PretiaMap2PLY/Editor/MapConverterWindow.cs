@@ -9,7 +9,7 @@ namespace PretiaMap2PLY.Editor
         private string _mapFilePath = null;
         private bool isExporting = false;
 
-        [MenuItem("Pretia Map Converter/Export Wizard")]
+        [MenuItem("PretiaMap2PLY/Export Wizard")]
         private static void ShowWindow()
         {
             var window = GetWindow<MapConverterWindow>();
